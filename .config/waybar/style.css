@@ -1,0 +1,48 @@
+* {
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #cad3f5; /* Text */
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    transition: background-color 500ms ease;
+    color: #cad3f5; /* Text */
+    font-weight: 400;
+}
+
+button:hover {
+    background-color: #363a4f; /* Surface0 */
+}
+
+button.active {
+    background-color: #c6a0f6; /* Muave */
+    color: #24273a; /* Base */
+}
+
+button.active:hover {
+    background-color: #f5a97f; /* Peach */
+}
+
+#window, #clock, #custom-start, #custom-power {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#workspaces, #window, #clock, #custom-start, #custom-power {
+    margin: 5px;
+    margin-bottom: 0px;
+    background-color: #24273a; /* Base */
+    border-radius: 10px;
+}
+
+#window.empty {
+    background-color: rgba(50, 50, 50, 0);
+    opacity: 0;
+}
+

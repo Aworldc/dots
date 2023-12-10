@@ -1,0 +1,40 @@
+window {
+    background-color: #24273a; /* Base */
+}
+
+#entry, #text, #input {
+    transition: background-color 500ms ease, color 500ms ease;
+}
+
+#input {
+    background-color: #363a4f; /* Surface0 */
+    border-radius: 11px;
+    margin-bottom: 10px;
+}
+
+#input:hover {
+    background-color: #494d64; /* Surface1 */
+}
+
+#input:focus {
+    background-color: #c6a0f6; /* Muave */
+    color: #24273a; /* Base */
+}
+
+#entry {
+    padding: 8px 12px;
+    border-radius: 11px;
+}
+
+#entry:hover {
+    background-color: #363a4f; /* Surface0 */
+}
+
+#entry:selected {
+    background-color: #c6a0f6; /* Muave */
+    outline: none;
+}
+
+#entry:selected #text {
+    color: #24273a; /* Base */
+}
