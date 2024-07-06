@@ -1,5 +1,5 @@
 window {
-    background-color: #24273a; /* Base */
+    background-color: #282828;
 }
 
 #entry, #text, #input {
@@ -7,34 +7,32 @@ window {
 }
 
 #input {
-    background-color: #363a4f; /* Surface0 */
+    background-color: #282828;
     border-radius: 11px;
     margin-bottom: 10px;
 }
 
-#input:hover {
-    background-color: #494d64; /* Surface1 */
-}
-
-#input:focus {
-    background-color: #c6a0f6; /* Muave */
-    color: #24273a; /* Base */
+#input, #input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 #entry {
     padding: 8px 12px;
-    border-radius: 11px;
+    border-radius: 999px;
+    color: #ebdbb2;
 }
 
 #entry:hover {
-    background-color: #363a4f; /* Surface0 */
+    background-color: #3c3836;
 }
 
 #entry:selected {
-    background-color: #c6a0f6; /* Muave */
+    background-color: #b8bb26;
     outline: none;
 }
 
 #entry:selected #text {
-    color: #24273a; /* Base */
+    color: #282828;
 }

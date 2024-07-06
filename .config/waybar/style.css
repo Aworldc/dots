@@ -5,28 +5,28 @@
 
 window#waybar {
     background-color: transparent;
-    color: #cad3f5; /* Text */
+    color: #ebdbb2;
 }
 
 button {
     border: none;
-    border-radius: 10px;
+    border-radius: 999px;
     transition: background-color 500ms ease;
-    color: #cad3f5; /* Text */
+    color: #ebdbb2;
     font-weight: 400;
 }
 
 button:hover {
-    background-color: #363a4f; /* Surface0 */
+    background-color: #3c3836;
 }
 
 button.active {
-    background-color: #c6a0f6; /* Muave */
-    color: #24273a; /* Base */
+    background-color: #b8bb26;
+    color: #282828;
 }
 
 button.active:hover {
-    background-color: #f5a97f; /* Peach */
+    background-color: #8ec07c;
 }
 
 #window, #clock, #custom-start, #custom-power {
@@ -37,12 +37,11 @@ button.active:hover {
 #workspaces, #window, #clock, #custom-start, #custom-power {
     margin: 5px;
     margin-bottom: 0px;
-    background-color: #24273a; /* Base */
-    border-radius: 10px;
+    background-color: #282828;
+    border-radius: 999px;
 }
 
 #window.empty {
     background-color: rgba(50, 50, 50, 0);
     opacity: 0;
 }
-
