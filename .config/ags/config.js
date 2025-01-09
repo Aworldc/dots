@@ -4,6 +4,7 @@ let network = await Service.import('network')
 let hyprland = await Service.import('hyprland')
 
 let showAudioPopup = Variable(false)
+let showScreenSaver = Variable(false)
 
 function arrayToColumn(array, spacing = 10, opaque = false, align = 'start') {
     return Widget.Box({
@@ -17,26 +18,27 @@ function arrayToColumn(array, spacing = 10, opaque = false, align = 'start') {
 
 App.applyCss(`
     window {
-        background-color: RGBA(40, 40, 40, 0.01);
+        background-color: RGBA(40, 40, 40, 0);
+        opacity: 0.65;
         border-radius: 999px;
     }
 
     button, .opaque {
         border-radius: 999px;
-        background-color: #282828;
+        background-color: rgb(57,57,57);
     }
 
     button:hover {
-        background-color: #3c3836;
+        background-color: rgb(69,69,69);
     }
 
     button:active {
-        background-color: #504945;
+        background-color: rgb(69,69,69);
     }
 
     button.active {
-        background-color: #ebdbb2;
-        color: #282828
+        background-color: #fff;
+        color: #111;
     }
     
     .clock {
@@ -49,7 +51,7 @@ App.applyCss(`
     }
 
     .evbx:hover {
-        background-color: RGBA(251, 241, 199, 0.3)
+        background-color: RGBA(255, 255, 255, 0.3)
     }
 
     .lrpad {
@@ -58,6 +60,23 @@ App.applyCss(`
 
     .smallround {
         border-radius: 20px;
+        background-color: RGBA(40, 40, 40, 0.01);
+    }
+
+    .blackout {
+        border-radius: 0px;
+        animation: screensaver 5s alternate infinite linear;
+        color: #777;
+    }
+
+    @keyframes screensaver {
+        from {
+            background: #000;
+        }
+        
+        to {
+            background: #fff;
+        }
     }
 `)
 
@@ -99,48 +118,61 @@ App.config({
                         true
                     )
                 ]),
-                centerWidget: arrayToColumn([
-                    Widget.Icon({
-                        icon: battery.bind('icon-name')
-                    }),
-                    Widget.CircularProgress({
-                        value: battery
-                            .bind('percent')
-                            .as(p => (p > 0 ? p / 100 : 0))
-                    }),
-                    Widget.EventBox({
-                        child: arrayToColumn([
-                            Widget.Icon().hook(audio.speaker, self => {
-                                const vol = audio.speaker.volume * 100
-                                const icon = [
-                                    [101, 'overamplified'],
-                                    [67, 'high'],
-                                    [34, 'medium'],
-                                    [1, 'low'],
-                                    [0, 'muted']
-                                ].find(([threshold]) => threshold <= vol)?.[1]
+                centerWidget: arrayToColumn(
+                    [
+                        Widget.Box({}),
+                        Widget.Icon({
+                            icon: battery.bind('icon-name')
+                        }),
+                        Widget.CircularProgress({
+                            value: battery
+                                .bind('percent')
+                                .as(p => (p > 0 ? p / 100 : 0))
+                        }),
+                        Widget.EventBox({
+                            child: arrayToColumn([
+                                Widget.Icon().hook(audio.speaker, self => {
+                                    const vol = audio.speaker.volume * 100
+                                    const icon = [
+                                        [101, 'overamplified'],
+                                        [67, 'high'],
+                                        [34, 'medium'],
+                                        [1, 'low'],
+                                        [0, 'muted']
+                                    ].find(
+                                        ([threshold]) => threshold <= vol
+                                    )?.[1]
 
-                                self.icon = `audio-volume-${icon}-symbolic`
-                                self.tooltip_text = `Volume ${Math.floor(vol)}%`
-                            }),
-                            Widget.CircularProgress({
-                                value: audio.speaker.bind('volume')
-                            })
-                        ]),
-                        className: 'evbx',
-                        onPrimaryClick: () => showAudioPopup.setValue(true)
-                    }),
-                    Widget.Icon({
-                        icon: network.wifi.bind('icon_name')
-                    }),
-                    Widget.CircularProgress({
-                        value: network.wifi
-                            .bind('strength')
-                            .as(p => (p > 0 ? p / 100 : 0))
-                    })
-                ]),
+                                    self.icon = `audio-volume-${icon}-symbolic`
+                                    self.tooltip_text = `Volume ${Math.floor(
+                                        vol
+                                    )}%`
+                                }),
+                                Widget.CircularProgress({
+                                    value: audio.speaker.bind('volume')
+                                })
+                            ]),
+                            className: 'evbx',
+                            onPrimaryClick: () => showAudioPopup.setValue(true)
+                        }),
+                        Widget.Icon({
+                            icon: network.wifi.bind('icon_name')
+                        }),
+                        Widget.CircularProgress({
+                            value: network.wifi
+                                .bind('strength')
+                                .as(p => (p > 0 ? p / 100 : 0))
+                        })
+                    ],
+                    10,
+                    true
+                ),
                 endWidget: arrayToColumn(
                     [
+                        Widget.Button({
+                            child: Widget.Icon('system-shutdown'),
+                            onClicked: () => showScreenSaver.setValue(true)
+                        }),
                         Widget.Label({
                             className: 'clock',
                             justification: 'center'
@@ -156,7 +188,7 @@ App.config({
                         })
                     ],
                     10,
-                    false,
+                    true,
                     'end'
                 )
             })
@@ -182,6 +214,19 @@ App.config({
                     className: 'lrpad'
                 })
             ])
+        }),
+        Widget.Window({
+            name: 'agsbar-screensaver',
+            anchor: ['right', 'top', 'bottom', 'left'],
+            exclusivity: 'ignore',
+            layer: 'overlay',
+            margins: [0, 0, 0, 0],
+            visible: showScreenSaver.bind(),
+            className: 'blackout',
+            child: Widget.EventBox({
+                child: Widget.Label('Click anywhere to exit the screen saver.'),
+                onPrimaryClick: () => showScreenSaver.setValue(false)
+            })
         })
     ]
 })

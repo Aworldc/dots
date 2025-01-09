@@ -1,5 +1,5 @@
-window {
-    background-color: #282828;
+/* window {
+    background-color: rgb(57,57,57);
 }
 
 #entry, #text, #input {
@@ -7,7 +7,7 @@ window {
 }
 
 #input {
-    background-color: #282828;
+    background-color: rgb(57,57,57);
     border-radius: 11px;
     margin-bottom: 10px;
 }
@@ -21,18 +21,27 @@ window {
 #entry {
     padding: 8px 12px;
     border-radius: 999px;
-    color: #ebdbb2;
+    color: #fff;
 }
 
 #entry:hover {
-    background-color: #3c3836;
+    background-color: rgb(69,69,69);
 }
 
 #entry:selected {
-    background-color: #b8bb26;
+    background-color: #fff;
     outline: none;
 }
 
 #entry:selected #text {
-    color: #282828;
+    color: rgb(57,57,57);
+} */
+#outer-box {
+    padding: 10px;
+}
+
+#entry {
+    border-radius: 7px;
+    padding: 5px 8px;
+    margin-top: 10px;
 }
