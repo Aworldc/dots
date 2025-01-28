@@ -1,1 +1,1 @@
-wofi --show drun -n -G --style "$HOME/.config/wofi/style.css" -a -p"Start menu"
+ags -r "(await import('file://$HOME/.config/ags/config.js')).toggle_launcher()"
