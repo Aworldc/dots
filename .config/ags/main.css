@@ -1,0 +1,56 @@
+button,
+.opaque {
+    border-radius: 12px;
+}
+
+window {
+    border-radius: 15px;
+    background-color: #24273a;
+    border: 1px solid #494d64;
+}
+
+window.panel-open {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+window.sidepanel {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+window.sidepanel > * {
+    padding: 6px;
+    padding-left: 0;
+}
+
+.sidepanel_title {
+    font-size: 22px;
+    padding-bottom: 8px;
+    font-weight: 400;
+}
+
+.opaque {
+    background-color: #34384c;
+}
+
+.bar-centerbox {
+    padding: 6px;
+}
+
+button.active {
+    background-color: #494d64;
+}
+
+calendar.calendar {
+    border-radius: 12px;
+    padding: 3px;
+    border: none;
+    background-color: #34384c;
+}
+
+label {
+    color: rgb(202, 211, 245);
+}
