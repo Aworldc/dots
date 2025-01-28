@@ -16,7 +16,7 @@
     in { 
       nixosConfigurations.allanslappy = lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [ ./configuration.nix nixos-hardware.nixosModules.microsoft-surface-pro-intel ];
 	specialArgs = {
           inherit pkgs-unstable;
 	  inherit pkgs-new;

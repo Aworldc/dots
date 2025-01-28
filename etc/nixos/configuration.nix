@@ -6,6 +6,7 @@
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.auto-optimise-store = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -99,6 +100,7 @@
   environment.sessionVariables.GDK_BACKEND = "wayland";
   environment.sessionVariables.CLUTTER_BACKEND = "wayland";
   environment.sessionVariables.XCURSOR_SIZE = "24";
+  environment.sessionVariables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 
 
   environment.systemPackages = [
@@ -109,7 +111,7 @@
     pkgs-new.kitty
     pkgs.gnome.nautilus
     pkgs-new.baobab
-    pkgs.wofi
+    pkgs-new.wofi
     pkgs.git
     pkgs-new.firefox
     pkgs.gradience
@@ -117,16 +119,15 @@
     pkgs.at-spi2-atk
     pkgs-new.qt6.qtwayland
     pkgs.gnome.adwaita-icon-theme
-    pkgs.prismlauncher
+    pkgs-new.prismlauncher
   # pkgs-new.neofetch
-    pkgs-new.jq
+  # pkgs-new.jq
     pkgs-new.mako
     pkgs.vscodium
     pkgs-new.brightnessctl
   # pkgs.libreoffice-fresh
   # pkgs-new.vlc
     pkgs-unstable.osu-lazer-bin
-    pkgs-new.hyprshot
   # pkgs-new.gnome.gnome-system-monitor
     pkgs.steam
     pkgs-new.hyprshot
@@ -135,9 +136,16 @@
   # pkgs-new.ladybird
     pkgs-new.libreoffice
   # pkgs-new.waydroid
-    pkgs-new.blender
+  # pkgs-new.blender
   # pkgs-new.freecad
     pkgs-new.thefuck
+    pkgs-new.nodejs_18
+    pkgs-new.pnpm
+    pkgs-new.cargo
+    pkgs-new.rustc
+    pkgs-new.rustfmt
+    pkgs-new.clippy
+    pkgs-new.gcc
   ];
 
   system.stateVersion = "24.05";
