@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 40 40"
+   version="1.1"
+   id="svg2"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <path
+     d="M 40,39 H 1 V 0 H 21.07 A 20,20 0 0 0 40,18.93 Z"
+     style="fill:#494d64;stroke-width:0.999997"
+     id="path1" />
+  <path
+     d="M 0,40 V 0 h 20 a 20,20 0 0 0 20,20 v 20 z"
+     style="fill:#181926;stroke-width:0.999997"
+     id="path2" />
+</svg>

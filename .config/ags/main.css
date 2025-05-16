@@ -5,17 +5,24 @@ button,
 
 window {
     border-radius: 15px;
-    background-color: #24273a;
-    border: 1px solid #494d64;
+    background-color: #181926;
+}
+
+window.bg {
+    border-radius: 0;
 }
 
 window.panel-open {
+    background-color: #24273a;
+    border: 1px solid #494d64;
     border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
 window.sidepanel {
+    background-color: #24273a;
+    border: 1px solid #494d64;
     border-left: none;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -24,6 +31,32 @@ window.sidepanel {
 window.sidepanel > * {
     padding: 6px;
     padding-left: 0;
+}
+
+window.frame {
+    border-radius: 0;
+    border: 0;
+    background-color: #181926;
+}
+
+.frame.frame-left {
+    border-right: 1px solid #494d64;
+}
+
+.frame.frame-right {
+    border-left: 1px solid #494d64;
+}
+
+.frame.frame-top {
+    border-bottom: 1px solid #494d64;
+}
+
+.frame.frame-bottom {
+    border-top: 1px solid #494d64;
+}
+
+.hidden {
+    opacity: 0;
 }
 
 .sidepanel_title {
@@ -53,4 +86,10 @@ calendar.calendar {
 
 label {
     color: rgb(202, 211, 245);
+}
+
+window.corner {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
 }

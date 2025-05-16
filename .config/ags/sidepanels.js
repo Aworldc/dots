@@ -114,13 +114,13 @@ function power_buttons() {
         Widget.Button({
             child: Widget.Label('Reboot'),
             on_clicked: () => {
-                Utils.exec('reboot now')
+                Utils.exec('shutdown -r now')
             }
         }),
         Widget.Button({
             child: Widget.Label('Log Off'),
             on_clicked: () => {
-                Utils.exec('pkill Hyprland')
+                Utils.exec('hyprctl dispatch exit')
             }
         })
     ]

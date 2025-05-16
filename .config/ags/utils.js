@@ -46,3 +46,15 @@ export function toggle_systray(launcher_open, systray_open) {
     systray_open.value = !systray_open.value
     launcher_open.value = false
 }
+
+export let anchor_from_side = side => {
+    if (side == 'top') {
+        return ['top', 'left', 'right']
+    } else if (side == 'left') {
+        return ['top', 'left', 'bottom']
+    } else if (side == 'right') {
+        return ['top', 'right', 'bottom']
+    } else if (side == 'bottom') {
+        return ['left', 'right', 'bottom']
+    }
+}

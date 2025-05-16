@@ -2,7 +2,8 @@ import {
     array_to_column,
     sound_icon,
     toggle_launcher,
-    toggle_systray
+    toggle_systray,
+    anchor_from_side
 } from './utils.js'
 
 let hyprland = await Service.import('hyprland')
@@ -60,6 +61,21 @@ function systray_button(launcher_open, systray_open) {
         }
     })
 }
+
+export let background = () =>
+    Widget.Window({
+        name: 'bg',
+        anchor: anchor_from_side('left'),
+        exclusivity: 'ignore',
+        class_name: 'bg',
+        margins: [0, 0, 0, 0],
+        child: Widget.Icon({
+            // Just a spacer
+            icon: 'dialog-information-symbolic',
+            size: 60,
+            class_name: 'hidden'
+        })
+    })
 
 export function bar(launcher_open, systray_open) {
     return Widget.Window({
